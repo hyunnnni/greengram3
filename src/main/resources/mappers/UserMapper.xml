@@ -10,4 +10,16 @@
         nm = #{nm},
         pic = #{pic}
     </insert>
+
+    <select id="userSelSignin">
+        SELECT iuser, nm, pic
+        from t_user
+        where uid = #{uid}
+    </select>
+
+    <select id="userSelUpw">
+        SELECT upw
+        FROM t_user
+        where uid = #{uid}
+    </select>
 </mapper>
