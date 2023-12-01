@@ -17,4 +17,6 @@ public class FeedSelVo {
     private List<String> pics;
     private String createdAt;
     private int isFav;
+    private List<FeedCommentSelVo> comments;
+    private int isMoreComment; //0:댓글이 더 없음 1: 댓글이 더 있음
 }

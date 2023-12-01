@@ -14,4 +14,8 @@ public interface FeedMapper {
     List<FeedSelVo> feedSelAll(FeedSelDto dto);
 
     List<String> feedSelPics (int ifeed);
+
+    int delFeedFav (FeedFavDto dto);
+
+    int insFeedFav(FeedFavDto dto);
 }

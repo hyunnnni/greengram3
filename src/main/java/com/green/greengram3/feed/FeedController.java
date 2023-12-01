@@ -2,12 +2,15 @@ package com.green.greengram3.feed;
 
 import com.green.greengram3.common.Const;
 import com.green.greengram3.common.ResVo;
+import com.green.greengram3.feed.model.FeedFavDto;
 import com.green.greengram3.feed.model.FeedInsDto;
 import com.green.greengram3.feed.model.FeedSelDto;
 import com.green.greengram3.feed.model.FeedSelVo;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.Parameters;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -32,14 +35,20 @@ public class FeedController {
 
     @GetMapping
     @Operation(summary = "피드 리스트" ,description = "전체 피드 리스트, 특정 사용자")
-    @Parameters(value = {
-            @Parameter(name = "page", description = "page값")
-    })
-    public List<FeedSelVo> PostFeedAll(int page){
-        FeedSelDto dto = FeedSelDto.builder()
-                .rowCount(Const.FEED_COUNT_PER_PAGE)
-                .startIdx((page-1)*Const.FEED_COUNT_PER_PAGE)
-                .build();
+    public List<FeedSelVo> PostFeedAll(FeedSelDto dto){
         return service.PostFeedAll(dto);
+    }
+
+    @GetMapping("/fav")
+    @Operation(summary = "좋아요 처리", description = "좋아요 누르기/ 취소")
+    @Parameters(value = {
+            @Parameter(name = "ifeed", description = "좋아요 피드"),
+            @Parameter(name = "iuser", description = "좋아요를 하는/취소하는 유저")
+    })
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "e")
+    })
+    public ResVo toggleFeedFav(FeedFavDto dto){
+        return service.toggleFeedFav(dto);
     }
 }
