@@ -65,5 +65,15 @@ public class FeedService {
         return new ResVo(Const.FEED_FAV_ADD);
     }
 
+    public ResVo DelFeed(FeedDelDto dto) {
+
+        int result = mapper.delComFavPics(dto);
+        if(result == 1) {
+            result = mapper.delFeed(dto);
+            return new ResVo(result);
+        }
+        return new ResVo(result);
+    }
+
 
 }

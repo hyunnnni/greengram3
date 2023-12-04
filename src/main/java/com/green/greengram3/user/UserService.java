@@ -2,10 +2,7 @@ package com.green.greengram3.user;
 
 import com.green.greengram3.common.Const;
 import com.green.greengram3.common.ResVo;
-import com.green.greengram3.user.model.UserInsSignupDto;
-import com.green.greengram3.user.model.UserInsSignupPdto;
-import com.green.greengram3.user.model.UserSigninDto;
-import com.green.greengram3.user.model.UserSigninVo;
+import com.green.greengram3.user.model.*;
 import lombok.RequiredArgsConstructor;
 import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.stereotype.Service;
@@ -45,5 +42,14 @@ public class UserService {
 
         }
         return vo;
+    }
+
+    public ResVo toffleFollow(UserFollowDto dto){
+        int result = mapper.delFollow(dto);
+        if(result == 1){
+            return new ResVo(Const.FAIL);
+        }
+        result = mapper.insFollow(dto);
+        return new ResVo(Const.SUCCESS);
     }
 }

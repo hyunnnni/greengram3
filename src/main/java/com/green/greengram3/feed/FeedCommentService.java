@@ -1,6 +1,7 @@
 package com.green.greengram3.feed;
 
 import com.green.greengram3.common.ResVo;
+import com.green.greengram3.feed.model.FeedCommentDelDto;
 import com.green.greengram3.feed.model.FeedCommentInsDto;
 import com.green.greengram3.feed.model.FeedCommentSelDto;
 import com.green.greengram3.feed.model.FeedCommentSelVo;
@@ -31,5 +32,11 @@ public class FeedCommentService {
                 .build();
 
         return mapper.selFeedCommentAll(dto);
+    }
+
+    public ResVo delComment(FeedCommentDelDto dto){
+        int result = mapper.delFeedComment(dto);
+
+        return new ResVo(result);
     }
 }

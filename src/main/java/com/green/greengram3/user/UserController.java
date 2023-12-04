@@ -4,6 +4,7 @@ import com.green.greengram3.common.ResVo;
 import com.green.greengram3.user.model.UserInsSignupDto;
 import com.green.greengram3.user.model.UserSigninDto;
 import com.green.greengram3.user.model.UserSigninVo;
+import com.green.greengram3.user.model.UserFollowDto;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.Parameters;
@@ -39,5 +40,11 @@ public class UserController {
     @Operation(summary = "인증", description = "아이디/ 비번을 활용한 인증처리")
     public UserSigninVo postsingin(@RequestBody UserSigninDto dto){
         return service.postsignin(dto);
+    }
+
+
+    @PostMapping("/follow")
+    public ResVo toggleFollow(@RequestBody UserFollowDto dto){
+        return service.toffleFollow(dto);
     }
 }

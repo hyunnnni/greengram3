@@ -12,8 +12,14 @@ public class FeedSelDto {
     private int page;
     @Schema(title = "로그인한 유저pk")
     private int loginedIuser;
+
     @Schema(title = "원하는 유저pk")
     private int targetIuser;
+
+
+    @Schema(title = "좋아요 Feed 리스트 여부")
+    private int isFavList;
+
     @JsonIgnore
     private int startIdx;
     @JsonIgnore

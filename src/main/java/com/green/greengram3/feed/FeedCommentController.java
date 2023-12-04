@@ -1,6 +1,7 @@
 package com.green.greengram3.feed;
 
 import com.green.greengram3.common.ResVo;
+import com.green.greengram3.feed.model.FeedCommentDelDto;
 import com.green.greengram3.feed.model.FeedCommentInsDto;
 import com.green.greengram3.feed.model.FeedCommentSelVo;
 import lombok.RequiredArgsConstructor;
@@ -25,5 +26,10 @@ public class FeedCommentController {
     @GetMapping
     public List<FeedCommentSelVo> getFeedCommentAll(int ifeed){
         return service.getFeedCommentAll(ifeed);
+    }
+
+    @DeleteMapping
+    public ResVo delComment(FeedCommentDelDto dto){
+        return service.delComment(dto);
     }
 }

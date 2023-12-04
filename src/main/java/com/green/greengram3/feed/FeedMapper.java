@@ -18,4 +18,12 @@ public interface FeedMapper {
     int delFeedFav (FeedFavDto dto);
 
     int insFeedFav(FeedFavDto dto);
+
+    int selFeedTest(int ifeed);
+
+    int delComFavPics(FeedDelDto dto);
+
+    int delFeed(FeedDelDto dto);
+
+
 }
