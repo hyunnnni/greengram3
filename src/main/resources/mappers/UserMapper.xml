@@ -33,4 +33,27 @@
         set from_iuser = #{fromIuser},
         to_iuser = #{toIuser}
     </insert>
+
+    <select id="userInfoSel">
+        select A.nm, A.created_at AS createdAt, A.pic, count(distinct B.ifeed) AS feedCnt, count(C.ifeed) AS favCnt,
+        D.follower, D.following, D.followState
+        from t_user AS A
+        left join t_feed AS B
+        on A.iuser = B.iuser
+        left join t_favorite AS C
+        on B.ifeed = C.ifeed
+        inner join(
+            select #{targetIuser} AS iuser
+        , SUM(case when FROM_iuser = #{targetIuser} then 1 ELSE 0 END) AS following
+        , SUM(case when to_iuser = #{targetIuser} then 1 ELSE 0 END) AS follower
+        ,(
+            sum(if(from_iuser = #{loginedIuser} and to_iuser = #{targetIuser},1,0))
+          + sum(if(from_iuser = #{targetIuser} and to_iuser = #{loginedIuser},2,0))
+        ) AS followState
+        FROM t_user_follow
+    ) AS D
+    on A.iuser = D.iuser
+    where A.iuser = #{targetIuser}
+
+    </select>
 </mapper>

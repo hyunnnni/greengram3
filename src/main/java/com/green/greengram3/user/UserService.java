@@ -52,4 +52,8 @@ public class UserService {
         result = mapper.insFollow(dto);
         return new ResVo(Const.SUCCESS);
     }
+
+    public UserInfoVo getUserInfoSel(UserInfoSelDto dto){
+        return mapper.userInfoSel(dto);
+    }
 }
