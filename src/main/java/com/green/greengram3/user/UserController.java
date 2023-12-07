@@ -43,7 +43,7 @@ public class UserController {
     }
 
     @GetMapping
-    public UserInfoVo getUserInfoSel(UserInfoSelDto dto){
+    public UserInfoVo getUserInfoSel( UserInfoSelDto dto){
         return service.getUserInfoSel(dto);
     }
 }
