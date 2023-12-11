@@ -1,26 +1,36 @@
 package com.green.greengram3.dm;
 
 import com.green.greengram3.common.Const;
-import com.green.greengram3.dm.model.DmMsgInsSelDto;
-import com.green.greengram3.dm.model.DmMsgSelVo;
-import com.green.greengram3.dm.model.DmUserInsDto;
+import com.green.greengram3.common.ResVo;
+import com.green.greengram3.dm.model.*;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class DmService {
     private final DmMapper mapper;
 
-    public List<DmMsgSelVo> getMsgAll(DmMsgInsSelDto dto){
-        dto.setRowCount(Const.FEED_COUNT_PER_PAGE);
-        dto.setStartIdx((dto.getPage()-1)*dto.getRowCount());
-        DmUserInsDto udto = DmUserInsDto.builder().build();
-        if(dto.getPage() == 0){
+    public List<DmMsgSelVo> getMsgAll(DmMsgSelDto dto){
 
-        }
         return mapper.selDmMsgAll(dto);
+    }
+
+    public List<DmSelVo> getDmAll(DmSelDto dto){
+        return mapper.selDmAll(dto);
+    }
+
+    public ResVo postDmMsg(DmMsgInsDto dto){
+        int result =  mapper.insDmMsg(dto);
+        return new ResVo(dto.getSeq());
+    }
+
+    public ResVo delDmMsg(DmMsgDelDto dto){
+        int result = mapper.delDmMsg(dto);
+        return new ResVo(result);
     }
 }

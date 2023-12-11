@@ -39,7 +39,7 @@ public class UserController {
 
     @PostMapping("/follow")
     public ResVo toggleFollow(@RequestBody UserFollowDto dto){
-        return service.toffleFollow(dto);
+        return service.toggleFollow(dto);
     }
 
     @GetMapping

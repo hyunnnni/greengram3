@@ -44,7 +44,7 @@ public class UserService {
         return vo;
     }
 
-    public ResVo toffleFollow(UserFollowDto dto){
+    public ResVo toggleFollow(UserFollowDto dto){
         int result = mapper.delFollow(dto);
         if(result == 1){
             return new ResVo(Const.FAIL);

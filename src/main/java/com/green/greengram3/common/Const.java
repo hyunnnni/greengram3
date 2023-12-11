@@ -15,7 +15,7 @@ public class Const {
 
     public static final int FAIL=0;
 
-
+    public static final int DM_MSG_COUNT_PER_PAGE=30;
 
 
 }
