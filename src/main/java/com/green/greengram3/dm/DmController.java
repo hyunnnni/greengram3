@@ -41,4 +41,8 @@ public class DmController {
     public ResVo delDmMsg(DmMsgDelDto dto){
         return service.delDmMsg(dto);
     }
+    @PostMapping
+    public DmSelVo postDm(DmInsDto dto){
+        return service.postDm(dto);
+    }
 }

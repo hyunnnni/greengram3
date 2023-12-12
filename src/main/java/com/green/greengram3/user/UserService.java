@@ -8,6 +8,8 @@ import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import javax.swing.text.html.parser.Entity;
+
 @Service
 @RequiredArgsConstructor
 public class UserService {
@@ -28,20 +30,26 @@ public class UserService {
     }
 
     public UserSigninVo postsignin (UserSigninDto dto){
-        String upw = mapper.userSelUpw(dto.getUid());
-        UserSigninVo vo = new UserSigninVo();
-        vo.setResult(Const.LOGIN_DIFF_UPW);
-        if(upw == null){
-            vo.setResult(Const.LOGIN_NO_UID);
-            return vo;
+        UserSigninDto sDto = new UserSigninDto();
+        sDto.setUid(dto.getUid());
+
+        UserSelEntity entity = mapper.selUser(sDto);
+
+        if(entity == null){
+            return UserSigninVo.builder().result(Const.LOGIN_NO_UID).build();
         }
 
-        if(BCrypt.checkpw(dto.getUpw(), upw)){
-            vo = mapper.userSelSignin(dto.getUid());
-            vo.setResult(Const.SUCCESS);
+        if(!BCrypt.checkpw(dto.getUpw(), entity.getUpw())){
+
+            return UserSigninVo.builder().result(Const.LOGIN_DIFF_UPW).build();
 
         }
-        return vo;
+        return UserSigninVo.builder()
+                .result(Const.SUCCESS)
+                .iuser(entity.getIuser())
+                .nm(entity.getNm())
+                .pic(entity.getPic())
+                .build();
     }
 
     public ResVo toggleFollow(UserFollowDto dto){

@@ -7,13 +7,11 @@ import org.apache.ibatis.annotations.Mapper;
 public interface UserMapper {
     int userInsSignup(UserInsSignupPdto pdto);
 
-    UserSigninVo userSelSignin(String uid);
-
-    String userSelUpw(String uid);
-
     int delFollow(UserFollowDto dto);
 
     int insFollow(UserFollowDto dto);
 
     UserInfoVo userInfoSel (UserInfoSelDto dto);
+
+    UserSelEntity selUser(UserSigninDto dto);
 }

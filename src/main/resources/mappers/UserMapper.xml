@@ -11,18 +11,6 @@
         pic = #{pic}
     </insert>
 
-    <select id="userSelSignin">
-        SELECT iuser, nm, pic
-        from t_user
-        where uid = #{uid}
-    </select>
-
-    <select id="userSelUpw">
-        SELECT upw
-        FROM t_user
-        where uid = #{uid}
-    </select>
-
     <delete id="delFollow">
         delete from t_user_follow
         where from_iuser = #{fromIuser} and to_iuser = #{toIuser}
@@ -55,5 +43,20 @@
         on A.iuser = D.iuser
         where A.iuser = #{targetIuser}
 
+    </select>
+
+    <select id="selUser">
+        SELECT iuser, uid, upw, nm, pic, created_at AS createdAt, updated_at AS updatedAt
+        from t_user
+        <where>
+            <if test="uid != null and uid != ''">
+                uid = #{uid}
+            </if>
+            <if test="iuser>0">
+                and iuser = #{iuser}
+            </if>
+        </where><!-- 여러 경우에 따라 다 대응을 해준다
+        둘 다 true면 and를 사용하고 하나만 true일 땐 and를 없애주고
+        둘 다 false면 where을 아예 없애준다 -->
     </select>
 </mapper>

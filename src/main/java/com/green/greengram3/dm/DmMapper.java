@@ -18,4 +18,9 @@ public interface DmMapper {
 
     int delDmMsg(DmMsgDelDto dto);
 
+    int insMakeDm(DmInsDto dto);
+    int insMakeDmUser(DmInsDto dto);
+    DmSelVo selDm(DmInsDto dto);
+
+    Integer selCheckDm(DmInsDto dto); //null이 넘어올 수 있기 때문에 객체로 받아준다 int의 랩퍼클래스
 }
