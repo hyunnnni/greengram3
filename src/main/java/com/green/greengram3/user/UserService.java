@@ -33,7 +33,7 @@ public class UserService {
         UserSigninDto sDto = new UserSigninDto();
         sDto.setUid(dto.getUid());
 
-        UserSelEntity entity = mapper.selUser(sDto);
+        UserSelEntity entity = mapper.selUser(dto);
 
         if(entity == null){
             return UserSigninVo.builder().result(Const.LOGIN_NO_UID).build();
