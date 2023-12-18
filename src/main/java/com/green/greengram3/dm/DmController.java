@@ -29,6 +29,7 @@ public class DmController {
     }
     @GetMapping
     public List<DmSelVo> getDmAll(DmSelDto dto){
+        log.info("dto = {}", dto);
         return service.getDmAll(dto);
     }
 
@@ -42,7 +43,7 @@ public class DmController {
         return service.delDmMsg(dto);
     }
     @PostMapping
-    public DmSelVo postDm(DmInsDto dto){
+    public DmSelVo postDm(@RequestBody DmInsDto dto){
         return service.postDm(dto);
     }
 }

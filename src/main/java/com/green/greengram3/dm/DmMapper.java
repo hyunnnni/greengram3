@@ -1,6 +1,7 @@
 package com.green.greengram3.dm;
 
 import com.green.greengram3.dm.model.*;
+import com.green.greengram3.user.model.UserSelEntity;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -23,4 +24,7 @@ public interface DmMapper {
     DmSelVo selDm(DmInsDto dto);
 
     Integer selCheckDm(DmInsDto dto); //null이 넘어올 수 있기 때문에 객체로 받아준다 int의 랩퍼클래스
+    UserSelEntity selOtherPersonByLoginUser(DmMsgInsDto dto);
+    int updDmLastMsg(DmMsgInsDto dto);
+    int updDmLastMsgAfterDelByLastMsg(DmMsgDelDto dto);
 }

@@ -46,7 +46,7 @@
     </select>
 
     <select id="selUser">
-        SELECT iuser, uid, upw, nm, pic, created_at AS createdAt, updated_at AS updatedAt
+        SELECT iuser, uid, upw, nm, pic, firebase_token AS firebaseToken, created_at AS createdAt, updated_at AS updatedAt
         from t_user
         <where>
             <if test="uid != null and uid != ''">
@@ -59,4 +59,17 @@
         둘 다 true면 and를 사용하고 하나만 true일 땐 and를 없애주고
         둘 다 false면 where을 아예 없애준다 -->
     </select>
+
+    <update id="updUserFirebaseToken">
+        UPDATE t_user
+        SET firebase_token = #{firebaseToken}
+        WHERE iuser = #{iuser}
+    </update>
+
+    <update id="updUserPic">
+        UPDATE t_user
+        SET pic = #{pic}
+        WHERE iuser = #{iuser}
+    </update>
+
 </mapper>

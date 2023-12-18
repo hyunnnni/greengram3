@@ -26,4 +26,7 @@ public interface FeedMapper {
     int delFeed(FeedDelDto dto);
 
 
+    List<FeedFavDto> selFeedFavForTest(FeedFavDto dto);
+
+    int delFeedFavAll(int ifeed);
 }

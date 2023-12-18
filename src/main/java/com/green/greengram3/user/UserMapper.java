@@ -14,4 +14,8 @@ public interface UserMapper {
     UserInfoVo userInfoSel (UserInfoSelDto dto);
 
     UserSelEntity selUser(UserSigninDto dto);
+
+    int updUserFirebaseToken(UserFirebaseTokenPatchDto dto);
+    int updUserPic(UserPicPatchDto dto);
+
 }

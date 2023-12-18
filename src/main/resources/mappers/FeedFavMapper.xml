@@ -14,4 +14,18 @@
         set iuser = #{iuser},
         ifeed = #{ifeed}
     </insert>
+    <select id="selFeedFavForTest">
+        select ifeed, iuser
+        from t_favorite
+        where ifeed = #{ifeed}
+        <if test = "iuser > 0">
+            and iuser = #{iuser}
+        </if>
+
+    </select>
+
+    <delete id="delFeedFavAll">
+        delete from t_favorite
+        where ifeed = #{ifeed}
+    </delete>
 </mapper>

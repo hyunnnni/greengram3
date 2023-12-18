@@ -9,6 +9,7 @@ public class UserSelEntity {
     private String pic;
     private String uid;
     private String upw;
+    private String firebaseToken;
     private String createdAt;
     private String updatedAt;
 }

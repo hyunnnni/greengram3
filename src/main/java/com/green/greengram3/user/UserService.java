@@ -64,4 +64,14 @@ public class UserService {
     public UserInfoVo getUserInfoSel(UserInfoSelDto dto){
         return mapper.userInfoSel(dto);
     }
+
+    public ResVo patchUserFirebaseToken(UserFirebaseTokenPatchDto dto) {
+        int affectedRows = mapper.updUserFirebaseToken(dto);
+        return new ResVo(affectedRows);
+    }
+
+    public ResVo patchUserPic(UserPicPatchDto dto) {
+        int affectedRows = mapper.updUserPic(dto);
+        return new ResVo(affectedRows);
+    }
 }
