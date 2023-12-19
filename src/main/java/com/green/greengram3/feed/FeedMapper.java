@@ -7,7 +7,7 @@ import java.util.List;
 
 @Mapper
 public interface FeedMapper {
-    int insFeed (FeedInsPdto pdto);
+    int insFeed (FeedInsDto dto);
 
     int insFeedPics(FeedInsPicsDto pics);
 

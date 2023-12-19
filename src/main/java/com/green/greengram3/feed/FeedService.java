@@ -16,22 +16,18 @@ public class FeedService {
     private final FeedCommentMapper comMapper;
 
     public ResVo postFeed(FeedInsDto dto){
-        FeedInsPdto pdto = FeedInsPdto .builder()
-                .iuser(dto.getIuser())
-                .contents(dto.getContents())
-                .location(dto.getLocation())
-                .build();
-        mapper.insFeed(pdto);
+
+        int result =  mapper.insFeed(dto);
 
         if(!dto.getPics().isEmpty()) {//앞의 배열이 비어있는지 아닌지 true, false 가려준다.
             FeedInsPicsDto pics = FeedInsPicsDto.builder()
-                    .ifeed(pdto.getIfeed())
+                    .ifeed(dto.getIfeed())
                     .pics(dto.getPics())
                     .build();
             mapper.insFeedPics(pics);
         }
 
-        return new ResVo(pdto.getIfeed());
+        return new ResVo(dto.getIfeed());
     }
 
     public List<FeedSelVo> PostFeedAll(FeedSelDto dto){
