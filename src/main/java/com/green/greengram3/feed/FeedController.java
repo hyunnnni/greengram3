@@ -12,6 +12,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Slf4j
@@ -22,17 +23,22 @@ import java.util.List;
 public class FeedController {
     private final FeedService service;
 
+
     @PostMapping
     @Operation(summary = "피드 등록" , description = "피드 등록 처리")
     public ResVo PostFeed(@RequestBody FeedInsDto dto){
-        return service.postFeed(dto);
+        ResVo vo = service.postFeed(dto);
+        return vo;
+
     }
 
 
     @GetMapping
     @Operation(summary = "피드 리스트" ,description = "전체 피드 리스트, 특정 사용자")
-    public List<FeedSelVo> PostFeedAll(FeedSelDto dto){
-        return service.PostFeedAll(dto);
+    public List<FeedSelVo> getFeedAll(FeedSelDto dto){
+        return service.getFeedAll(dto);
+        //service.getFeedAll(dto);
+        //return new ArrayList<>();
     }
 
     @GetMapping("/fav")

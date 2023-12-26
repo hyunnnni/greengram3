@@ -30,7 +30,7 @@ public class FeedService {
         return new ResVo(dto.getIfeed());
     }
 
-    public List<FeedSelVo> PostFeedAll(FeedSelDto dto){
+    public List<FeedSelVo> getFeedAll(FeedSelDto dto){
         List<FeedSelVo> vo = mapper.feedSelAll(dto);
 
         FeedCommentSelDto fcDto = FeedCommentSelDto.builder()
@@ -40,9 +40,11 @@ public class FeedService {
 
         for(FeedSelVo a : vo){
             a.setPics(mapper.feedSelPics(a.getIfeed()));
+
             fcDto.setIfeed(a.getIfeed());
             List<FeedCommentSelVo> comments = comMapper.selFeedCommentAll(fcDto);
             a.setComments(comments);
+
             if(comments.size() == 4){
                 a.setIsMoreComment(Const.FEED_COMMENT_MORE);
                 comments.remove(comments.size()-1);
