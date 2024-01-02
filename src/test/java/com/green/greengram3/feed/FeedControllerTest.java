@@ -1,6 +1,7 @@
 package com.green.greengram3.feed;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.green.greengram3.MockMvcConfig;
 import com.green.greengram3.common.ResVo;
 import com.green.greengram3.feed.model.FeedInsDto;
 import com.green.greengram3.feed.model.FeedSelVo;
@@ -30,6 +31,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+@MockMvcConfig//MockMvcConfig 인터페이스 만들어서 사용한 애노테이션 한글 깨짐을 방지해줌
 @WebMvcTest({FeedController.class})//스프링 컨네이너 올려줌 빈 등록이 된다.
 class FeedControllerTest {
 
@@ -90,11 +92,11 @@ class FeedControllerTest {
         List<FeedSelVo> vo = new ArrayList<>();
         FeedSelVo vo1 = new FeedSelVo();
         vo1.setIfeed(1);
-        vo1.setContents("adc");
+        vo1.setContents("안녕하세요");
 
         FeedSelVo vo2 = new FeedSelVo();
-        vo1.setIfeed(2);
-        vo1.setContents("def");
+        vo2.setIfeed(2);
+        vo2.setContents("def");
 
         vo.add(vo1);
         vo.add(vo2);
