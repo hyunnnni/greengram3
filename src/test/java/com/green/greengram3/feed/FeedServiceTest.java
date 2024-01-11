@@ -117,13 +117,13 @@ class FeedServiceTest {
         comVo4.setWriterIuser(2);
         comVo4.setComment("끼룰룽야");
         FeedCommentSelVo comVo5 = new FeedCommentSelVo();
-        comVo4.setIfeedComment(5);
-        comVo4.setWriterIuser(3);
-        comVo4.setComment("케케");
+        comVo5.setIfeedComment(5);
+        comVo5.setWriterIuser(3);
+        comVo5.setComment("케케");
         FeedCommentSelVo comVo6 = new FeedCommentSelVo();
-        comVo4.setIfeedComment(5);
-        comVo4.setWriterIuser(4);
-        comVo4.setComment("랄라");
+        comVo6.setIfeedComment(5);
+        comVo6.setWriterIuser(4);
+        comVo6.setComment("랄라");
 
         List<FeedCommentSelVo> comList2 = new ArrayList<>();
         comList2.add(comVo3);
