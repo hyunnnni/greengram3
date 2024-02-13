@@ -1,0 +1,8 @@
+[2023-12-28 20:23:20 INFO  main] [com.green.greengram3.feed.FeedMapperTest] Starting FeedMapperTest using Java 17.0.8.1 with PID 11108 (started by Administrator in D:\Students\hyun\java\greengram3)
+[2023-12-28 20:23:20 INFO  main] [com.green.greengram3.feed.FeedMapperTest] No active profile set, falling back to 1 default profile: "default"
+[2023-12-28 20:23:21 INFO  main] [com.green.greengram3.feed.FeedMapperTest] Started FeedMapperTest in 0.973 seconds (process running for 1.796)
+[2023-12-28 20:23:21 INFO  main] [com.zaxxer.hikari.HikariDataSource] HikariPool-1 - Starting...
+[2023-12-28 20:23:21 INFO  main] [com.zaxxer.hikari.pool.HikariPool] HikariPool-1 - Added connection org.mariadb.jdbc.Connection@1536ea40
+[2023-12-28 20:23:21 INFO  main] [com.zaxxer.hikari.HikariDataSource] HikariPool-1 - Start completed.
+[2023-12-28 20:23:21 INFO  SpringApplicationShutdownHook] [com.zaxxer.hikari.HikariDataSource] HikariPool-1 - Shutdown initiated...
+[2023-12-28 20:23:21 INFO  SpringApplicationShutdownHook] [com.zaxxer.hikari.HikariDataSource] HikariPool-1 - Shutdown completed.
